@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.keyone.controller" />
+
+	<!--不需要配置映射器和适配器 -->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
+	<!-- 注册转换器 -->
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.keyone.controller.converter.CustomDateConverter" />
+				<bean class="com.keyone.controller.converter.StringTrimConverter" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!--视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 定义统一异常处理器 扫描异常的包 -->
+	<bean class="com.keyone.exception.MyExceptionResolver"></bean>
+
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<!-- 拦截所有登录请求 -->
+		<!-- <mvc:interceptor> <mvc:mapping path="/**" /> <bean class="com.keyone.interceptor.LoginInterceptor" 
+			/> </mvc:interceptor> -->
+		<!-- 拦截页面是否已经发出指令 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/chooseId" />
+			<bean class="com.keyone.interceptor.ChooseIdInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/watch" />
+			<bean class="com.keyone.interceptor.WatchInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/chooseMode" />
+			<bean class="com.keyone.interceptor.ChooseModeInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/plan/**" />
+			<bean class="com.keyone.interceptor.PlanInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- 资源映射 -->
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
+	<!-- **代表以下的子目录 -->
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**" />
+</beans>

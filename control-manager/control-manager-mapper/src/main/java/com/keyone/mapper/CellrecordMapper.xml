@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keyone.mapper.CellrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.keyone.pojo.Cellrecord" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="Toid" property="toid" jdbcType="VARCHAR" />
+    <result column="Cellnum" property="cellnum" jdbcType="BIGINT" />
+    <result column="Cellstatus" property="cellstatus" jdbcType="VARCHAR" />
+    <result column="Osresult" property="osresult" jdbcType="VARCHAR" />
+    <result column="Endtime" property="endtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, Toid, Cellnum, Cellstatus, Osresult, Endtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.keyone.pojo.CellrecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cellrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cellrecord
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cellrecord
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.keyone.pojo.CellrecordExample" >
+    delete from cellrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.keyone.pojo.Cellrecord" >
+    insert into cellrecord (ID, Toid, Cellnum, 
+      Cellstatus, Osresult, Endtime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{toid,jdbcType=VARCHAR}, #{cellnum,jdbcType=BIGINT}, 
+      #{cellstatus,jdbcType=VARCHAR}, #{osresult,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.keyone.pojo.Cellrecord" >
+    insert into cellrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="toid != null" >
+        Toid,
+      </if>
+      <if test="cellnum != null" >
+        Cellnum,
+      </if>
+      <if test="cellstatus != null" >
+        Cellstatus,
+      </if>
+      <if test="osresult != null" >
+        Osresult,
+      </if>
+      <if test="endtime != null" >
+        Endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="toid != null" >
+        #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="cellnum != null" >
+        #{cellnum,jdbcType=BIGINT},
+      </if>
+      <if test="cellstatus != null" >
+        #{cellstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="osresult != null" >
+        #{osresult,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.keyone.pojo.CellrecordExample" resultType="java.lang.Integer" >
+    select count(*) from cellrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update cellrecord
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toid != null" >
+        Toid = #{record.toid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellnum != null" >
+        Cellnum = #{record.cellnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.cellstatus != null" >
+        Cellstatus = #{record.cellstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.osresult != null" >
+        Osresult = #{record.osresult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endtime != null" >
+        Endtime = #{record.endtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update cellrecord
+    set ID = #{record.id,jdbcType=VARCHAR},
+      Toid = #{record.toid,jdbcType=VARCHAR},
+      Cellnum = #{record.cellnum,jdbcType=BIGINT},
+      Cellstatus = #{record.cellstatus,jdbcType=VARCHAR},
+      Osresult = #{record.osresult,jdbcType=VARCHAR},
+      Endtime = #{record.endtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.keyone.pojo.Cellrecord" >
+    update cellrecord
+    <set >
+      <if test="toid != null" >
+        Toid = #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="cellnum != null" >
+        Cellnum = #{cellnum,jdbcType=BIGINT},
+      </if>
+      <if test="cellstatus != null" >
+        Cellstatus = #{cellstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="osresult != null" >
+        Osresult = #{osresult,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        Endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.keyone.pojo.Cellrecord" >
+    update cellrecord
+    set Toid = #{toid,jdbcType=VARCHAR},
+      Cellnum = #{cellnum,jdbcType=BIGINT},
+      Cellstatus = #{cellstatus,jdbcType=VARCHAR},
+      Osresult = #{osresult,jdbcType=VARCHAR},
+      Endtime = #{endtime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

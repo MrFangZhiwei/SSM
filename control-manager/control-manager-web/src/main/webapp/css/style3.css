@@ -1,0 +1,510 @@
+@charset 'utf-8';
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+form,
+fieldset,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 625%;
+}
+
+body {
+    font-size: 0.16rem;
+    background-color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+}
+
+ul,
+ol {
+    list-style: outside none none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.none {
+    display: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: '.';
+    display: block;
+    height: 0;
+    background-color: red;
+    clear: both;
+    visibility: hidden;
+}
+
+#header {
+    width: 100%;
+    height: .45rem;
+    background-color: #333;
+    box-shadow: 0 11px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+#header .link {
+    height: .45rem;
+    color: #eee;
+    /*垂直居中*/
+    line-height: .45rem;
+    /*水平居中*/
+    text-align: center;
+    font-size: 0.16rem;
+}
+
+#header .link li {
+    float: left;
+    width: 25%;
+}
+
+#header .link a {
+    display: block;
+    color: #eee;
+}
+
+#header .link a:hover,
+#header .active a {
+    background-color: #000;
+}
+
+#footer {
+    max-width: 6.4rem;
+    background-color: #C4C575;
+    text-align: center;
+    padding: .1rem 0;
+    margin: 0 auto;
+    font-size: 0.16rem;
+    clear: both;
+}
+
+#footer .top {
+    padding: 0 0 .05rem 0;
+}
+
+#myCarousel {
+    padding: .45rem 0 0 0;
+    max-width: 6.4rem;
+    margin: 0 auto;
+}
+
+#search {
+    max-width: 6.4rem;
+    height: .33rem;
+    margin: 0 auto;
+    padding: .03rem 0 0 0;
+    position: relative;
+}
+
+#search .search {
+    width: 95%;
+    height: .27rem;
+    margin: 0 auto;
+    display: block;
+    border-radius: .04rem;
+    outline: none;
+    background-color: #fff;
+    padding: 0 .05rem;
+}
+
+#search .button {
+    display: block;
+    outline: none;
+    position: absolute;
+    height: .27rem;
+    width: .5rem;
+    top: .03rem;
+    right: 1%;
+    font-size: .12rem;
+    color: #666;
+    background-color: #eee;
+    border-radius: .04rem;
+    border: none;
+    cursor: pointer;
+}
+
+#tour {
+    max-width: 6.4rem;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 6.4rem;
+    margin: 0 auto;
+}
+
+#tour h2 {
+    text-align: center;
+    color: #666;
+    font-size: .26rem;
+}
+
+#tour h3 {
+    text-align: center;
+    color: #666;
+    font-weight: normal;
+    font-size: .16rem;
+    margin: .05rem 0 .1rem 0;
+}
+
+#tour figure {
+    width: 50%;
+    float: left;
+    background-color: #eee;
+    margin: 0 0 .05rem 0;
+    font-size: .16rem;
+}
+
+#tour figure img {
+    padding: .02rem;
+    vertical-align: middle;
+    border-radius: .04rem;
+}
+
+#tour .info {
+    padding: .1rem 0 0 0;
+    font-size: .16rem;
+}
+
+#tour figcaption {
+    color: #666;
+    font-size: .16rem;
+    padding: .02rem .05rem
+}
+
+#tour h4 {
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tour p {
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tour .info .price {
+    font-weight: bold;
+    color: #f60;
+    display: block;
+    text-indent: .06rem;
+}
+
+#tour .info .price strong {
+    letter-spacing: .01rem;
+}
+
+#tour .info .sat {
+    float: right;
+    position: relative;
+    right: .05rem;
+    font-style: normal;
+}
+
+#headline {
+    max-width: 6.4rem;
+    padding-top: 0.45rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+#headline hgroup {
+    position: absolute;
+    color: #eee;
+    top: 48%;
+    left: 10%;
+}
+
+#headline h2 {
+    font-size: 0.22rem;
+}
+
+#headline h3 {
+    font-size: 0.16rem;
+}
+
+.list {
+    font-size: .16rem;
+    color: #666;
+/*     max-width: 6.4rem; */
+    margin: 0.1rem auto;
+    padding: 0.1rem;
+}
+
+.list h2 {
+    font-size: .2rem;
+    border-bottom: .01rem dashed #666;
+    padding: 0 0 .2rem 0;
+}
+
+.about p {
+    line-height: 2;
+    margin: .2rem 0;
+}
+
+.about address {
+    font-style: normal;
+    margin: .2rem 0;
+    line-height: 1.6;
+}
+
+.information figure {
+    margin: .15rem 0 0 0;
+    position: relative;
+}
+
+.information figure:after {
+    content: '.';
+    display: block;
+    height: 0;
+    background-color: red;
+    clear: both;
+    visibility: hidden;
+}
+
+.information figure img {
+    float: left;
+    width: 50%
+}
+
+.information figure figcaption {
+    float: right;
+    width: 48%
+}
+
+.information .title {
+    padding: 0 0 .05rem 0;
+    border: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.information .small_title {
+    font-weight: normal;
+    /*手机端文字过长处理*/
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.information .price {
+    color: #f60;
+    position: absolute;
+    bottom: 0;
+}
+
+.information .price strong {
+    color: #f60;
+    font-size: .26rem;
+}
+
+.ticket h2 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #999;
+    padding: 0 0 15px 0;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.ticket .type {
+    margin: .2rem 0 0 0;
+}
+
+.ticket .type mark {
+    color: #fff;
+    background-color: #458b00;
+    padding: .05rem .08rem;
+    border-radius: .04rem;
+    margin: .1rem 0 .1rem 0;
+}
+
+.ticket .form p {
+    margin: 0.1rem 0;
+}
+
+.ticket .form label {
+    display: block;
+    margin: 0 0 .05rem 0;
+}
+
+.ticket .form input {
+    width: 97%;
+    height: .2rem;
+    background-color: #fff;
+    border: .01rem solid #ccc;
+    border-radius: .04rem;
+    color: #666;
+    padding: .05rem;
+}
+
+.ticket .submit {
+    width: 30%;
+    padding: .1rem 0;
+    background-color: rgba(102, 102, 102, 1);
+    border-radius: .04rem;
+    text-align: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: .1rem 0;
+    margin: 0 auto;
+    display: block;
+}
+
+.ticket .new {
+    margin: .2rem 0 0 0;
+}
+
+.ticket .new ul {
+    margin: .2rem 0 0 0;
+}
+
+.ticket .new li {
+    display: inline-block;
+    padding: .05rem .1rem;
+}
+
+.ticket .new li:first-child {
+    padding-left: 0;
+}
+
+.ticket .new li:nth-child(2) {
+    background-color: #458b00;
+    color: #fff;
+    border-radius: .04rem;
+}
+
+.ticket table {
+	margin: 0 auto;
+    width: 97%;
+    border: .01rem solid #ddd;
+    border-collapse: collapse;
+    
+}
+
+.ticket th {
+    padding: .15rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.ticket td {
+    padding: .15rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.ticket tr:nth-child(2n) {
+    background-color: #fafafa;
+}
+
+.ticket tr:hover {
+    background-color: #eee;
+}
+
+.ticket .price {
+    color: #666;
+}
+
+.ticket .more {
+    color: #666;
+}
+
+.ticket .reserve {
+    padding: .05rem;
+    background-color: #666;
+    border-radius: .04rem;
+    text-align: center;
+    color: #fff;
+    /*设置边框input的边框为无*/
+    border: none;
+       /*手机端文字过长处理*/
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+
+/*媒体查询大于480px且小于640px*/
+
+@media (min-width: 480px) and (max-width: 640px) {
+    #tour h2 {
+        font-size: .26rem;
+    }
+    #tour h3,
+    #footer,
+    #tour figcaption,
+    #tour .info,
+    .list {
+        font-size: .16rem;
+    }
+    #headline h2 {
+        font-size: 0.22rem;
+    }
+    #headline h3 {
+        font-size: 0.14rem;
+    }
+    .list h2 {
+        font-size: .2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #tour h2,
+    .information .price strong {
+        font-size: .20rem;
+    }
+    #tour h3,
+    #tour figcaption,
+    #tour .info,
+    .list {
+        font-size: .14rem;
+    }
+    #footer {
+        font-size: .12rem;
+    }
+    #headline h2 {
+        font-size: 0.18rem;
+    }
+    #headline h3 {
+        font-size: 0.12rem;
+    }
+    .list h2 {
+        font-size: .17rem;
+    }
+    .min {
+        display: none;
+    }
+}
